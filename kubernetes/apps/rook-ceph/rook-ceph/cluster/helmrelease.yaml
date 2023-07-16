@@ -6,7 +6,8 @@ metadata:
   name: rook-ceph-cluster
   namespace: rook-ceph
 spec:
-  interval: 15m
+  interval: 30m
+  timeout: 15m
   chart:
     spec:
       chart: rook-ceph-cluster
@@ -50,69 +51,11 @@ spec:
       bdev_async_discard = true
       osd_class_update_on_start = false
     cephClusterSpec:
-      resources:
-        mgr:
-          limits:
-            cpu: 750m
-            memory: 1Gi
-          requests:
-            cpu: 10m
-            memory: 512Mi
-        mon:
-          limits:
-            cpu: 1500m
-            memory: 2Gi
-          requests:
-            cpu: 10m
-            memory: 1Gi
-        osd:
-          limits:
-            cpu: 1500m
-            memory: 4Gi
-          requests:
-            cpu: 10m
-            memory: 2Gi
-        prepareosd:
-          limits:
-            cpu: 1000m
-            memory: 400Mi
-          requests:
-            cpu: 10m
-            memory: 200Mi
-        mgr-sidecar:
-          limits:
-            cpu: 256m
-            memory: 100Mi
-          requests:
-            cpu: 10m
-            memory: 40Mi
-        crashcollector:
-          limits:
-            cpu: 100m
-            memory: 220M
-          requests:
-            cpu: 10m
-            memory: 64M
-        logcollector:
-          limits:
-            cpu: 500m
-            memory: 1Gi
-          requests:
-            cpu: 10m
-            memory: 100Mi
-        cleanup:
-          limits:
-            cpu: 500m
-            memory: 1Gi
-          requests:
-            cpu: 10m
-            memory: 100Mi
       network:
         provider: host
         connections:
           compression:
-            # TODO: Test out enabling this on next cluster rebuild
-            enabled: false
+            enabled: true
       crashCollector:
         disable: false
       dashboard:
@@ -145,7 +88,7 @@ spec:
         spec:
           failureDomain: host
           replicated:
-            size: 3
+            size: 5
         storageClass:
           enabled: true
           name: ceph-block
@@ -167,11 +110,11 @@ spec:
         spec:
           metadataPool:
             replicated:
-              size: 3
+              size: 5
           dataPools:
             - failureDomain: host
               replicated:
-                size: 3
+                size: 5
               name: data0
           metadataServer:
             activeCount: 1
@@ -203,12 +146,12 @@ spec:
           metadataPool:
             failureDomain: host
             replicated:
-              size: 3
+              size: 5
           dataPool:
             failureDomain: host
             erasureCoded:
-              dataChunks: 2
-              codingChunks: 1
+              dataChunks: 4
+              codingChunks: 2
           preservePoolsOnDelete: true
           gateway:
             port: 80
