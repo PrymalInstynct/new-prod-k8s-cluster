@@ -6,6 +6,7 @@ metadata:
   namespace: default
 spec:
   interval: 30m
+  timeout: 10m
   chart:
     spec:
       chart: hajimari
@@ -14,7 +15,7 @@ spec:
         kind: HelmRepository
         name: hajimari
         namespace: flux-system
-  maxHistory: 2
+  maxHistory: 3
   install:
     createNamespace: true
     remediation:
@@ -25,33 +26,104 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  dependsOn:
-    - name: ingress-nginx
-      namespace: networking
   values:
     hajimari:
-      title: Apps
+      title: Bookmarks
+      lightTheme: horizon
       darkTheme: espresso
       alwaysTargetBlank: true
       showGreeting: false
       showAppGroups: false
       showAppStatus: false
-      showBookmarkGroups: false
-      showGlobalBookmarks: false
+      showBookmarks: true
+      showBookmarkGroups: true
+      showGlobalBookmarks: true
+      globalBookmarks:
+        - group: Home Lab
+          bookmarks:
+            - name: Harvester
+              url: "https://harvester.${SECRET_PRIVATE_DOMAIN}"
+            - name: Unifi Controller
+              url: "https://unifi.${SECRET_PRIVATE_DOMAIN}/login?redirect=%2F"
+            - name: AdGuard Home - Container
+              url: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:5300/#"
+            - name: AdGuard Home - RPI 1
+              url: "http://10.10.1.31"
+            - name: AdGuard Home - RPI 2
+              url: "http://10.10.1.32"
+            - name: NAS
+              url: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:5000"
+            - name: MinIO
+              url: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:9001"
+            - name: Web Server
+              url: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:7777"
+            - name: Cloudflare
+              url: "https://dash.cloudflare.com/login"
+            - name: Print
+              url: "https://print.${SECRET_PRIVATE_DOMAIN}"
+            - name: Home Assistant
+              url: "https://prymalhome.duckdns.org:8123/lovelace/alarm"
+        - group: Dev
+          bookmarks:
+            - name: GitHub
+              url: "https://github.com/PrymalInstynct?tab=repositories"
+            - name: Material Design Icons
+              url: "https://materialdesignicons.com"
+            - name: Codepen
+              url: "https://codepen.io"
+            - name: Devdocs
+              url: "https://devdocs.io"
+            - name: Devhints
+              url: "https://devhints.io"
+        - group: Google
+          bookmarks:
+            - name: Gmail
+              url: "https://gmail.com"
+            - name: Drive
+              url: "https://drive.google.com"
+        - group: Media
+          bookmarks:
+            - name: Spotify
+              url: "https://open.spotify.com"
+            - name: YouTube
+              url: "https://youtube.com/feed/subscriptions"
+            - name: Netflix
+              url: "https://www.netflix.com"
+        - group: Cyber Security
+          bookmarks:
+            - name: The Hacker News
+              url: "https://thehackernews.com/"
+            - name: picoCTF
+              url: "https://picoctf.org/"
+            - name: Detection Lab
+              url: "https://github.com/clong/DetectionLab"
+        - group: Work
+          bookmarks:
+            - name: LMPassage
+              url: "https://lmpassage3.external.lmco.com/"
       showAppUrls: false
       defaultEnable: true
       namespaceSelector:
         matchNames:
+          - authentication
+          - databases
           - default
+          - flux-system
+          - kube-tools
           - monitoring
+          - networking
+          - rook-ceph
+          - storage
     ingress:
       main:
         enabled: true
         ingressClassName: nginx
         annotations:
+          nginx.ingress.kubernetes.io/whitelist-source-range: |
+            10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
           hajimari.io/enable: "false"
         hosts:
-          - host: &host "hajimari.${SECRET_DOMAIN}"
+          - host: &host "hajimari.prymal.info"
             paths:
               - path: /
                 pathType: Prefix
