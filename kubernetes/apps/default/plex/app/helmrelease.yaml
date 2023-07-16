@@ -45,7 +45,7 @@ spec:
     service:
       main:
         type: LoadBalancer
-        externalIPs: ["10.10.1.101"]
+        externalIPs: ["10.10.1.145"]
         externalTrafficPolicy: Local
         ports:
           http:
