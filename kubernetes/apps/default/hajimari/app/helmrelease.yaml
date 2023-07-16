@@ -105,11 +105,11 @@ spec:
       defaultEnable: true
       namespaceSelector:
         matchNames:
-          - authentication
+          - cert-manager
           - databases
           - default
           - flux-system
-          - kube-tools
+          - kube-system
           - monitoring
           - networking
           - rook-ceph
