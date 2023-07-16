@@ -120,7 +120,7 @@ spec:
           hajimari.io/icon: simple-icons:prometheus
         pathType: Prefix
         hosts:
-          - &host "prometheus.${SECRET_DOMAIN}"
+          - &host "prometheus.prymal.info"
         tls:
           - hosts:
               - *host

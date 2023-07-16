@@ -4,12 +4,12 @@ originRequest:
 
 # https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/ingress
 ingress:
-  - hostname: "${SECRET_DOMAIN}"
+  - hostname: "prymal.info"
     service: https://ingress-nginx-controller.networking.svc.cluster.local:443
     originRequest:
-      originServerName: "ingress.${SECRET_DOMAIN}"
-  - hostname: "*.${SECRET_DOMAIN}"
+      originServerName: "ingress.prymal.info"
+  - hostname: "*.prymal.info"
     service: https://ingress-nginx-controller.networking.svc.cluster.local:443
     originRequest:
-      originServerName: "ingress.${SECRET_DOMAIN}"
+      originServerName: "ingress.prymal.info"
   - service: http_status:404

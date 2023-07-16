@@ -35,7 +35,7 @@ spec:
           value: "${TIMEZONE}"
       service:
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "ingress.${SECRET_DOMAIN}"
+          external-dns.alpha.kubernetes.io/hostname: "ingress.prymal.info"
           io.cilium/lb-ipam-ips: "10.10.1.110"
         externalTrafficPolicy: Cluster
       publishService:
