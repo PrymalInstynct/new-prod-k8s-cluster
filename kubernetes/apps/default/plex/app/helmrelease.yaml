@@ -54,7 +54,6 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: ingress.prymal.info
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-          nginx.ingress.kubernetes.io/app-root: /web
           hajimari.io/icon: mdi:plex
         hosts:
           - host: &host "{{ .Release.Name }}.prymal.info"
