@@ -42,25 +42,25 @@ spec:
         - group: Home Lab
           bookmarks:
             - name: Harvester
-              url: "https://harvester.${SECRET_PRIVATE_DOMAIN}"
+              url: "https://harvester.prymal.linux"
             - name: Unifi Controller
-              url: "https://unifi.${SECRET_PRIVATE_DOMAIN}/login?redirect=%2F"
+              url: "https://unifi.prymal.linux/login?redirect=%2F"
             - name: AdGuard Home - Container
-              url: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:5300/#"
+              url: "http://scorpion.prymal.linux:5300/#"
             - name: AdGuard Home - RPI 1
               url: "http://10.10.1.31"
             - name: AdGuard Home - RPI 2
               url: "http://10.10.1.32"
             - name: NAS
-              url: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:5000"
+              url: "http://scorpion.prymal.linux:5000"
             - name: MinIO
-              url: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:9001"
+              url: "http://scorpion.prymal.linux:9001"
             - name: Web Server
-              url: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:7777"
+              url: "http://scorpion.prymal.linux:7777"
             - name: Cloudflare
               url: "https://dash.cloudflare.com/login"
             - name: Print
-              url: "https://print.${SECRET_PRIVATE_DOMAIN}"
+              url: "https://print.prymal.linux"
             - name: Home Assistant
               url: "https://prymalhome.duckdns.org:8123/lovelace/alarm"
         - group: Dev

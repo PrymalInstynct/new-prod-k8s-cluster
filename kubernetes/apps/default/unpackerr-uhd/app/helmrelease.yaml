@@ -56,7 +56,7 @@ spec:
       complete:
         enabled: true
         type: nfs
-        server: "scorpion.${SECRET_PRIVATE_DOMAIN}"
+        server: "scorpion.prymal.linux"
         path: /volume1/data/media/downloads/complete
         mountPath: /complete
     resources:

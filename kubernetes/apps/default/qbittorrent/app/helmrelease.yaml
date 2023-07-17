@@ -51,13 +51,14 @@ spec:
       bittorrent:
         enabled: true
         type: LoadBalancer
-        externalIPs: ["10.10.1.101"]
         ports:
           bittorrent:
             enabled: true
             port: *port-bt
             protocol: TCP
             targetPort: *port-bt
+        annotations:
+          io.cilium/lb-ipam-ips: "10.10.1.102"
         externalTrafficPolicy: Local
     ingress:
       main:
@@ -98,13 +99,13 @@ spec:
       downloads:
         enabled: true
         type: nfs
-        server: "scorpion.${SECRET_PRIVATE_DOMAIN}"
+        server: "scorpion.prymal.linux"
         path: /volume1/data/media/downloads
         mountPath: /downloads
       media:
         enabled: true
         type: nfs
-        server: "scorpion.${SECRET_PRIVATE_DOMAIN}"
+        server: "scorpion.prymal.linux"
         path: /volume1/data/media
         mountPath: /media
       incomplete:
