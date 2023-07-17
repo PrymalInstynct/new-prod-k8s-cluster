@@ -6,3 +6,4 @@ resources:
   - ./hajimari/ks.yaml
   - ./kubernetes-schemas/ks.yaml
   - ./plex/ks.yaml
+  - ./prowlarr.yaml
