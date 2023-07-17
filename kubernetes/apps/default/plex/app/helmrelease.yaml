@@ -45,11 +45,12 @@ spec:
     service:
       main:
         type: LoadBalancer
-        externalIPs: ["10.10.1.145"]
         externalTrafficPolicy: Local
         ports:
           http:
             port: 32400
+        annotations:
+          io.cilium/lb-ipam-ips: "10.10.1.101"
     ingress:
       main:
         enabled: true
