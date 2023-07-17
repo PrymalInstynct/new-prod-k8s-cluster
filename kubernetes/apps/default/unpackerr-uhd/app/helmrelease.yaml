@@ -35,7 +35,7 @@ spec:
       repository: ghcr.io/onedr0p/unpackerr
       tag: 0.11.2@sha256:74d53999ade288a9980945d6f93028e177ef635f5aee02439b9d62fb7dcdbfd1
     env:
-      TZ: ${TIMEZONE}
+      TZ: America/Denver
       UN_SONARR_0_URL: http://sonarr-uhd.default.svc.cluster.local
       UN_SONARR_0_PATHS_0: /complete/sonarr-uhd
       UN_RADARR_0_URL: http://radarr-uhd.default.svc.cluster.local
