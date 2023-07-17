@@ -11,7 +11,7 @@ resources:
   # - ./letsblockit/ks.yaml
   # - ./lldap/ks.yaml
   # - ./media-browser/ks.yaml
-  # - ./overseerr/ks.yaml
+  - ./overseerr/ks.yaml
   - ./plex/ks.yaml
   - ./prowlarr/ks.yaml
   - ./qbittorrent/ks.yaml
