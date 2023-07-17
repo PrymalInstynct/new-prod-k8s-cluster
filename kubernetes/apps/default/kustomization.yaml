@@ -13,15 +13,15 @@ resources:
   # - ./media-browser/ks.yaml
   # - ./overseerr/ks.yaml
   - ./plex/ks.yaml
-  - ./prowlarr/ks.yaml
-  - ./qbittorrent/ks.yaml
-  - ./radarr-hd/ks.yaml
-  - ./radarr-uhd/ks.yaml
-  - ./recyclarr-hd/ks.yaml
-  - ./recyclarr-uhd/ks.yaml
+  # - ./prowlarr/ks.yaml
+  # - ./qbittorrent/ks.yaml
+  # - ./radarr-hd/ks.yaml
+  # - ./radarr-uhd/ks.yaml
+  # - ./recyclarr-hd/ks.yaml
+  # - ./recyclarr-uhd/ks.yaml
   # - ./semaphore/ks.yaml
-  - ./sonarr-hd/ks.yaml
-  - ./sonarr-uhd/ks.yaml
-  - ./theme-park/ks.yaml
-  - ./unpackerr-hd/ks.yaml
-  - ./unpackerr-uhd/ks.yaml
+  # - ./sonarr-hd/ks.yaml
+  # - ./sonarr-uhd/ks.yaml
+  # - ./theme-park/ks.yaml
+  # - ./unpackerr-hd/ks.yaml
+  # - ./unpackerr-uhd/ks.yaml
