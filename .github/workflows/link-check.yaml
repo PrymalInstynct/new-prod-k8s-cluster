@@ -11,14 +11,25 @@ jobs:
     name: Link Check
     runs-on: ubuntu-latest
     steps:
+      - name: Generate Token
+        uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92 # v1.8.0
+        id: generate-token
+        with:
+          app_id: "${{ secrets.APP_ID }}"
+          private_key: "${{ secrets.PRIVATE_KEY }}"
+
       - name: Checkout
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+        with:
+          token: "${{ steps.generate-token.outputs.token }}"
 
       - name: Link Checker
         uses: lycheeverse/lychee-action@ec3ed119d4f44ad2673a7232460dc7dff59d2421 # v1.8.0
         id: lychee
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ steps.generate-token.outputs.token }}"
+        with:
+          args: --verbose --no-progress --exclude-mail './**/*.md'
 
       - name: Find Link Checker Issue
         id: link-checker-issue
@@ -34,6 +45,6 @@ jobs:
           title: Broken links detected 🔗
           issue-number: "${{ steps.link-checker-issue.outputs.issue-number }}"
           content-filepath: ./lychee/out.md
-          token: "${{ secrets.GITHUB_TOKEN }}"
+          token: "${{ steps.generate-token.outputs.token }}"
           labels: |
             broken-links
