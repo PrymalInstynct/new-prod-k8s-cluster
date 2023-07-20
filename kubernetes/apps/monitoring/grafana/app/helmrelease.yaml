@@ -27,7 +27,7 @@ spec:
     keepHistory: false
   dependsOn:
     - name: rook-ceph
-      namespace: kube-system
+      namespace: rook-ceph
     - name: ingress-nginx
       namespace: networking
   values:
