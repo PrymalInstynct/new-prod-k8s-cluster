@@ -16,6 +16,14 @@
       "automergeType": "pr",
       "ignoreTests": false,
       "matchUpdateTypes": ["digest", "patch", "minor"]
+    },
+    {
+      "description": "Auto merge Helm Charts",
+      "matchDatasources": ["helm"],
+      "automerge": true,
+      "automergeType": "pr",
+      "ignoreTests": false,
+      "matchUpdateTypes": ["patch", "minor"]
     }
   ]
 }
