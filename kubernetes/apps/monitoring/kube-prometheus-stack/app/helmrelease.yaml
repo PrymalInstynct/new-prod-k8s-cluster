@@ -33,10 +33,60 @@ spec:
       namespace: rook-ceph
     - name: ingress-nginx
       namespace: networking
+    - name: thanos
+      namespace: monitoring
   values:
     cleanPrometheusOperatorObjectNames: true
-    alertmanager:
-      enabled: false
+   alertmanager:
+      config:
+        global:
+          resolve_timeout: 5m
+        receivers:
+          - name: 'null' # quote
+          - name: discord
+            discord_configs:
+              - webhook_url: ${SECRET_PROMETHEUS_DISCORD_WEBHOOK_URL}
+        route:
+          group_by: ["alertname", "job"]
+          group_wait: 1m
+          group_interval: 10m
+          repeat_interval: 12h
+          receiver: discord
+          routes:
+            - receiver: "null" # quote
+              matchers:
+                - alertname =~ "InfoInhibitor"
+            - receiver: discord
+              matchers:
+                - severity = "critical"
+              continue: true
+        inhibit_rules:
+          - source_matchers:
+              - severity = "critical"
+            target_matchers:
+              - severity = "warning"
+            equal: ["alertname", "namespace"]
+      ingress:
+        enabled: true
+        pathType: Prefix
+        ingressClassName: nginx
+        annotations:
+          hajimari.io/appName: "Alert Manager"
+          hajimari.io/icon: mdi:alert-decagram-outline
+        hosts:
+          - &host alert-manager.prymal.info
+        tls:
+          - hosts:
+              - *host
+      alertmanagerSpec:
+        replicas: 3
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: rook-ceph
+              resources:
+                requests:
+                  storage: 1Gi
     grafana:
       enabled: false
       forceDeployDashboards: true
@@ -124,13 +174,25 @@ spec:
         tls:
           - hosts:
               - *host
+      thanosService:
+        enabled: true
+      thanosServiceMonitor:
+        enabled: true
       prometheusSpec:
+        replicas: 3
+        replicaExternalLabelName: __replica__
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         enableAdminAPI: true
         walCompression: true
+        thanos:
+          image: quay.io/thanos/thanos:v0.31.0
+          objectStorageConfig:
+            name: thanos-objstore-secret
+            key: objstore.yml
+        retention: 2d
         retentionSize: 8GB
         storageSpec:
           volumeClaimTemplate:
