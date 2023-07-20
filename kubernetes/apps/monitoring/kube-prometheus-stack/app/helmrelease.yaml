@@ -37,7 +37,7 @@ spec:
       namespace: monitoring
   values:
     cleanPrometheusOperatorObjectNames: true
-   alertmanager:
+    alertmanager:
       config:
         global:
           resolve_timeout: 5m
