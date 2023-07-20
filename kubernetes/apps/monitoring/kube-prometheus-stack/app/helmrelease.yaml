@@ -29,8 +29,8 @@ spec:
   uninstall:
     keepHistory: false
   dependsOn:
-    - name: local-path-provisioner
-      namespace: kube-system
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
     - name: ingress-nginx
       namespace: networking
   values:
@@ -135,7 +135,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: local-path
+              storageClassName: ceph-block
               resources:
                 requests:
                   storage: 10Gi
