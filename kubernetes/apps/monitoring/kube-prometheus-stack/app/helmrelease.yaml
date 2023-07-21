@@ -83,7 +83,7 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: rook-ceph
+              storageClassName: ceph-block
               resources:
                 requests:
                   storage: 1Gi
