@@ -76,7 +76,7 @@ spec:
         enabled: true
         ingressClassName: external
         annotations:
-          external-dns.alpha.kubernetes.io/target: external.prymal.info
+          external-dns.alpha.kubernetes.io/target: ingress.prymal.info
         hosts:
           - host: &host status.prymal.info
             paths:
