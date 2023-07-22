@@ -74,12 +74,12 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: nginx
+        ingressClassName: external
         annotations:
-          external-dns.alpha.kubernetes.io/target: ingress.prymal.info
+          external-dns.alpha.kubernetes.io/target: external.prymal.info
           hajimari.io/icon: simple-icons:gatsby
         hosts:
-          - host: &host "{{ .Release.Name }}.prymal.info"
+          - host: &host status.devbu.io
             paths:
               - path: /
                 pathType: Prefix
