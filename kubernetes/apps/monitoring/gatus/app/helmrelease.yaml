@@ -79,7 +79,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: ingress.prymal.info
           hajimari.io/icon: simple-icons:gatsby
         hosts:
-          - host: &host status.devbu.io
+          - host: &host status.prymal.info
             paths:
               - path: /
                 pathType: Prefix
