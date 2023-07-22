@@ -1,8 +1,9 @@
 ---
+# yaml-language-server: $schema=https://kubernetes-schemas.prymal.info/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: ingress-nginx
+  name: nginx-internal
   namespace: networking
 spec:
   interval: 30m
@@ -29,29 +30,32 @@ spec:
     - name: cloudflared
       namespace: networking
   values:
+    fullnameOverride: nginx-internal
     controller:
       extraEnvs:
         - name: TZ
           value: "America/Denver"
+      replicaCount: 2
       service:
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "ingress.prymal.info"
-          io.cilium/lb-ipam-ips: "10.10.1.110"
+          external-dns.alpha.kubernetes.io/hostname: internal.prymal.info
+          io.cilium/lb-ipam-ips: 10.10.1.112
         externalTrafficPolicy: Cluster
-      publishService:
-        enabled: true
       ingressClassResource:
+        name: internal
         default: true
       config:
-        client-header-timeout: 120
-        client-body-buffer-size: "100M"
+        client-body-buffer-size: 100M
         client-body-timeout: 120
+        client-header-timeout: 120
         enable-brotli: "true"
-        hsts-max-age: "31449600"
-        keep-alive: 120
+        enable-real-ip: "true"
+        hsts-max-age: 31449600
         keep-alive-requests: 10000
-        proxy-body-size: "100M"
-        ssl-protocols: "TLSv1.3 TLSv1.2"
+        keep-alive: 120
+        proxy-body-size: 0
+        proxy-buffer-size: 16k
+        ssl-protocols: TLSv1.3 TLSv1.2
       metrics:
         enabled: true
         serviceMonitor:
@@ -60,10 +64,18 @@ spec:
           namespaceSelector:
             any: true
       extraArgs:
-        default-ssl-certificate: "networking/${SECRET_DOMAIN/./-}-production-tls"
+        default-ssl-certificate: networking/prymal-info-production-tls
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: nginx-internal
+              app.kubernetes.io/component: controller
       resources:
         requests:
-          cpu: 10m
+          cpu: 100m
           memory: 250Mi
         limits:
           memory: 500Mi
