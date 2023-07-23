@@ -78,7 +78,7 @@ endpoints:
       - send-on-resolved: true
   - name: k8s-control-prod-0
     group: "Infrastructure"
-    url: icmp://10.10.1.10
+    url: tcp://10.10.1.10:22
     interval: 1m
     conditions:
       - "[CONNECTED] == true"
@@ -87,7 +87,7 @@ endpoints:
       - send-on-resolved: true
   - name: k8s-control-prod-1
     group: "Infrastructure"
-    url: icmp://10.10.1.11
+    url: tcp://10.10.1.11:22
     interval: 1m
     conditions:
       - "[CONNECTED] == true"
@@ -96,7 +96,7 @@ endpoints:
       - send-on-resolved: true
   - name: k8s-control-prod-2
     group: "Infrastructure"
-    url: icmp://10.10.1.12
+    url: tcp://10.10.1.12:22
     interval: 1m
     conditions:
       - "[CONNECTED] == true"
@@ -105,7 +105,7 @@ endpoints:
       - send-on-resolved: true
   - name: k8s-worker-prod-3
     group: "Infrastructure"
-    url: icmp://10.10.1.13
+    url: tcp://10.10.1.13:22
     interval: 1m
     conditions:
       - "[CONNECTED] == true"
@@ -114,7 +114,7 @@ endpoints:
       - send-on-resolved: true
   - name: k8s-worker-prod-4
     group: "Infrastructure"
-    url: icmp://10.10.1.14
+    url: tcp://10.10.1.14:22
     interval: 1m
     conditions:
       - "[CONNECTED] == true"
