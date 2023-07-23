@@ -61,7 +61,7 @@ spec:
           nginx.ingress.kubernetes.io/app-root: /web
           hajimari.io/icon: mdi:plex
         hosts:
-          - host: &host "{{ .Release.Name }}.prymal.info"
+          - host: &host plex.prymal.info
             paths:
               - path: /
                 pathType: Prefix
