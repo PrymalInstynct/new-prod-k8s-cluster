@@ -32,13 +32,3 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: discord
-  - name: echo-server
-    group: external
-    url: https://echo-server.prymal.info
-    interval: 1m
-    client:
-      dns-resolver: tcp://1.1.1.1:53
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
