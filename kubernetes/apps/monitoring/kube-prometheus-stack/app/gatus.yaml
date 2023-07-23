@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: prometheus
-        group: internal
+        group: "Web - Internal"
         url: https://prometheus.prymal.info
         interval: 1m
         client:
@@ -19,6 +19,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: discord
+          - send-on-resolved: true
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -31,7 +32,7 @@ data:
   config.yaml: |
     endpoints:
       - name: alert-manager
-        group: internal
+        group: "Web - Internal"
         url: https://alert-manager.prymal.info
         interval: 1m
         client:
@@ -40,3 +41,4 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: discord
+          - send-on-resolved: true

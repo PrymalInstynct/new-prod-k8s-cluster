@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: plex
-        group: external
+        group: "Web - External"
         url: https://plex.prymal.info/web/index.html
         interval: 1m
         client:
@@ -19,3 +19,4 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: discord
+          - send-on-resolved: true

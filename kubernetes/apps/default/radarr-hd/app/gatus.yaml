@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: radarr-hd
-        group: internal
+        group: "Web - Internal"
         url: https://radarr-hd.prymal.info
         interval: 1m
         client:
@@ -19,3 +19,4 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: discord
+          - send-on-resolved: true

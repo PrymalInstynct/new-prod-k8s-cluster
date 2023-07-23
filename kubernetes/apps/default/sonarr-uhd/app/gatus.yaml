@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: sonarr-uhd
-        group: internal
+        group: "Web - Internal"
         url: https://sonarr-uhd.prymal.info
         interval: 1m
         client:
@@ -19,3 +19,4 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: discord
+          - send-on-resolved: true

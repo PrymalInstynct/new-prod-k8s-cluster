@@ -14,16 +14,15 @@ alerting:
   discord:
     webhook-url: ${DISCORD_WEBHOOK_URL}
     default-alert:
-      send-on-resolved: true
-      failure-threshold: 5
-      success-threshold: 3
+      failure-threshold: 3
+      success-threshold: 2
 connectivity:
   checker:
     target: 1.1.1.1:53
     interval: 1m
 endpoints:
   - name: status
-    group: external
+    group: "Web - External"
     url: https://status.prymal.info
     interval: 1m
     client:
@@ -32,3 +31,4 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: discord
+      - send-on-resolved: true
