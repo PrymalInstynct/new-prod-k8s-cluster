@@ -21,9 +21,120 @@ connectivity:
     target: 1.1.1.1:53
     interval: 1m
 endpoints:
+  - name: harvester
+    group: "Infrastructure"
+    url: https://harvester.prymal.info
+    interval: 1m
+    client:
+      dns-resolver: tcp://10.10.1.31:53
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+      - send-on-resolved: true
+  - name: synology
+    group: "Infrastructure"
+    url: http://scorpion.prymal.info:5000
+    interval: 1m
+    client:
+      dns-resolver: tcp://10.10.1.31:53
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+      - send-on-resolved: true
+  - name: minio
+    group: "Infrastructure"
+    url: http://scorpion.prymal.info:9001
+    interval: 1m
+    client:
+      dns-resolver: tcp://10.10.1.31:53
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+      - send-on-resolved: true
+  - name: "adguard home - rpi1"
+    group: "Infrastructure"
+    url: http://10.10.1.31
+    interval: 1m
+    client:
+      dns-resolver: tcp://10.10.1.31:53
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+      - send-on-resolved: true
+  - name: "adguard home - rpi2"
+    group: "Infrastructure"
+    url: http://10.10.1.32
+    interval: 1m
+    client:
+      dns-resolver: tcp://10.10.1.31:53
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+      - send-on-resolved: true
+  - name: k8s-control-prod-0
+    group: "Infrastructure"
+    url: icmp://10.10.1.10
+    interval: 1m
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: discord
+      - send-on-resolved: true
+  - name: k8s-control-prod-1
+    group: "Infrastructure"
+    url: icmp://10.10.1.11
+    interval: 1m
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: discord
+      - send-on-resolved: true
+  - name: k8s-control-prod-2
+    group: "Infrastructure"
+    url: icmp://10.10.1.12
+    interval: 1m
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: discord
+      - send-on-resolved: true
+  - name: k8s-worker-prod-3
+    group: "Infrastructure"
+    url: icmp://10.10.1.13
+    interval: 1m
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: discord
+      - send-on-resolved: true
+  - name: k8s-worker-prod-4
+    group: "Infrastructure"
+    url: icmp://10.10.1.14
+    interval: 1m
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: discord
+      - send-on-resolved: true
   - name: status
     group: "Web - External"
     url: https://status.prymal.info
+    interval: 1m
+    client:
+      dns-resolver: tcp://1.1.1.1:53
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+      - send-on-resolved: true
+  - name: "home assistant"
+    group: "Web - External"
+    url: https://prymalhome.duckdns.org:8123
     interval: 1m
     client:
       dns-resolver: tcp://1.1.1.1:53
