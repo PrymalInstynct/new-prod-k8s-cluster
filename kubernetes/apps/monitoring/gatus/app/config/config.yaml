@@ -34,7 +34,7 @@ endpoints:
       - send-on-resolved: true
   - name: synology
     group: "Infrastructure"
-    url: http://scorpion.prymal.info:5000
+    url: http://scorpion.prymal.linux:5000/#/signin
     interval: 1m
     client:
       dns-resolver: tcp://10.10.1.31:53
@@ -45,7 +45,7 @@ endpoints:
       - send-on-resolved: true
   - name: minio
     group: "Infrastructure"
-    url: http://scorpion.prymal.info:9001
+    url: http://scorpion.prymal.linux:9001/login
     interval: 1m
     client:
       dns-resolver: tcp://10.10.1.31:53
