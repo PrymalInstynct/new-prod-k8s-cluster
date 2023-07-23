@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: kubernetes-schemas
-        group: exteranl
+        group: external
         url: https://kubernetes-schemas.prymal.info
         interval: 1m
         client:
