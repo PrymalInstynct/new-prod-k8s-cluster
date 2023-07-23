@@ -122,6 +122,15 @@ endpoints:
     alerts:
       - type: discord
       - send-on-resolved: true
+  - name: dev01
+    group: "Infrastructure"
+    url: tcp://10.10.111.200:22
+    interval: 1m
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: discord
+      - send-on-resolved: true
   - name: status
     group: "Web - External"
     url: https://status.prymal.info
