@@ -10,11 +10,11 @@ data:
   config.yaml: |
     endpoints:
       - name: harimari
-        group: external
-        url: https://harimari.prymal.info/web/index.html
+        group: internal
+        url: https://harimari.prymal.info
         interval: 1m
         client:
-          dns-resolver: tcp://1.1.1.1:53
+          dns-resolver: tcp://10.10.1.31:53
         conditions:
           - "[STATUS] == 200"
         alerts:
