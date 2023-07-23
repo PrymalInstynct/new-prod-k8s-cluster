@@ -57,7 +57,7 @@ spec:
       main:
         enabled: true
         ingressClassName: nginx
-        # annotations:
+        annotations:
         #   external-dns.alpha.kubernetes.io/target: ingress.prymal.info
         #   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         #   nginx.ingress.kubernetes.io/app-root: /web
