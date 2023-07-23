@@ -23,7 +23,7 @@ connectivity:
 endpoints:
   - name: harvester
     group: "Infrastructure"
-    url: https://harvester.prymal.info
+    url: https://harvester.prymal.linux
     interval: 1m
     client:
       dns-resolver: tcp://10.10.1.31:53
