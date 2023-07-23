@@ -14,8 +14,10 @@ alerting:
   discord:
     webhook-url: ${DISCORD_WEBHOOK_URL}
     default-alert:
+      enabled: true
       failure-threshold: 3
       success-threshold: 2
+      send-on-resolved: true
 connectivity:
   checker:
     target: 1.1.1.1:53
@@ -32,7 +34,6 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: discord
-      - send-on-resolved: true
   - name: synology
     group: "Infrastructure"
     url: http://scorpion.prymal.linux:5000/#/signin
@@ -43,7 +44,6 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: discord
-      - send-on-resolved: true
   - name: minio
     group: "Infrastructure"
     url: http://scorpion.prymal.linux:9001/login
@@ -54,7 +54,6 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: discord
-      - send-on-resolved: true
   - name: "adguard home - rpi1"
     group: "Infrastructure"
     url: http://10.10.1.31
@@ -65,7 +64,6 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: discord
-      - send-on-resolved: true
   - name: "adguard home - rpi2"
     group: "Infrastructure"
     url: http://10.10.1.32
@@ -76,7 +74,6 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: discord
-      - send-on-resolved: true
   - name: k8s-control-prod-0
     group: "Infrastructure"
     url: tcp://10.10.1.10:22
@@ -85,7 +82,6 @@ endpoints:
       - "[CONNECTED] == true"
     alerts:
       - type: discord
-      - send-on-resolved: true
   - name: k8s-control-prod-1
     group: "Infrastructure"
     url: tcp://10.10.1.11:22
@@ -94,7 +90,6 @@ endpoints:
       - "[CONNECTED] == true"
     alerts:
       - type: discord
-      - send-on-resolved: true
   - name: k8s-control-prod-2
     group: "Infrastructure"
     url: tcp://10.10.1.12:22
@@ -103,7 +98,6 @@ endpoints:
       - "[CONNECTED] == true"
     alerts:
       - type: discord
-      - send-on-resolved: true
   - name: k8s-worker-prod-3
     group: "Infrastructure"
     url: tcp://10.10.1.13:22
@@ -112,7 +106,6 @@ endpoints:
       - "[CONNECTED] == true"
     alerts:
       - type: discord
-      - send-on-resolved: true
   - name: k8s-worker-prod-4
     group: "Infrastructure"
     url: tcp://10.10.1.14:22
@@ -121,7 +114,6 @@ endpoints:
       - "[CONNECTED] == true"
     alerts:
       - type: discord
-      - send-on-resolved: true
   - name: dev01
     group: "Infrastructure"
     url: tcp://10.10.111.200:22
@@ -130,7 +122,6 @@ endpoints:
       - "[CONNECTED] == true"
     alerts:
       - type: discord
-      - send-on-resolved: true
   - name: status
     group: "Web - External"
     url: https://status.prymal.info
@@ -141,7 +132,6 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: discord
-      - send-on-resolved: true
   - name: "home assistant"
     group: "Web - External"
     url: https://prymalhome.duckdns.org:8123
@@ -152,4 +142,3 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: discord
-      - send-on-resolved: true
