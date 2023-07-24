@@ -71,7 +71,7 @@ spec:
         useAllNodes: false
         useAllDevices: false
         config:
-          osdsPerDevice: "2"
+          osdsPerDevice: "1"
         nodes:
           - name: "k8s-control-prod-0"
             devices:
