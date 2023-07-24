@@ -8,7 +8,6 @@ spec:
   dependsOn:
     - name: cluster-apps-external-secrets-stores
     - name: cluster-apps-radarr-uhd
-    - name: cluster-apps-sonarr-uhd
   path: ./kubernetes/apps/default/recyclarr-uhd/app
   prune: true
   sourceRef:
