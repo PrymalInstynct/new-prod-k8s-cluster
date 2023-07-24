@@ -1,0 +1,58 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: adguard-sync
+  namespace: default
+spec:
+  interval: 15m
+  timeout: 10m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controller:
+      strategy: RollingUpdate
+    image:
+      repository: ghcr.io/bakito/adguardhome-sync
+      tag: v0.4.14@sha256:f54742a0fc5bfc323b484ea4b863188b7798a78a090611eb1c0e5463cad0937b
+    envFrom:
+      - secretRef:
+          name: adguardhome-sync-secret
+    service:
+      main:
+        ports:
+          http:
+            port: &port 8080
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: adguardhome-sync-configmap
+        subPath: adguardhome-sync.yaml
+        mountPath: /config/adguardhome-sync.yaml
+        readOnly: false
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: adguardhome-sync-settings
+    resources:
+      requests:
+        cpu: 5m
+        memory: 10Mi
+      limits:
+        memory: 50Mi
