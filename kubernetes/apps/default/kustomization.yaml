@@ -5,12 +5,9 @@ resources:
   - ./namespace.yaml
   # - ./adguard-sync/ks.yaml
   # - ./authelia/ks.yaml
-  # - ./echo-server/ks.yaml
   - ./hajimari/ks.yaml
-  - ./kubernetes-schemas/ks.yaml
   # - ./letsblockit/ks.yaml
   # - ./lldap/ks.yaml
-  # - ./media-browser/ks.yaml
   - ./overseerr/ks.yaml
   - ./plex/ks.yaml
   - ./prowlarr/ks.yaml

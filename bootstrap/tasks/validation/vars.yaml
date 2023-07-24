@@ -1,5 +1,4 @@
 ---
-
 - name: Verify required bootstrap vars are set
   ansible.builtin.assert:
     that:

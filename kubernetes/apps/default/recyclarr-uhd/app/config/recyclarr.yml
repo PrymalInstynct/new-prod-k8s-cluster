@@ -1,5 +1,4 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/recyclarr/recyclarr/master/schemas/config-schema.json
 sonarr:
   ulta_high_def:
     base_url: http://sonarr-uhd.default.svc.cluster.local
