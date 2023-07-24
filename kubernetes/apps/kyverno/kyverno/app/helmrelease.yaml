@@ -29,12 +29,18 @@ spec:
     crds:
       install: true
     grafana:
-      enabled: true
+      enabled: false
       annotations:
         grafana_folder: System
     backgroundController:
       serviceMonitor:
         enabled: true
+      resources:
+        requests:
+          cpu: 10m
+          memory: 100Mi
+        limits:
+          memory: 500Mi
       rbac:
         clusterRole:
           extraResources:
@@ -52,13 +58,31 @@ spec:
     cleanupController:
       serviceMonitor:
         enabled: true
+      resources:
+        requests:
+          cpu: 10m
+          memory: 100Mi
+        limits:
+          memory: 500Mi
     reportsController:
       serviceMonitor:
         enabled: true
+      resources:
+        requests:
+          cpu: 10m
+          memory: 100Mi
+        limits:
+          memory: 500Mi
     admissionController:
       replicas: 3
       serviceMonitor:
         enabled: true
+      resources:
+        requests:
+          cpu: 10m
+          memory: 100Mi
+        limits:
+          memory: 500Mi
       rbac:
         clusterRole:
           extraResources:
