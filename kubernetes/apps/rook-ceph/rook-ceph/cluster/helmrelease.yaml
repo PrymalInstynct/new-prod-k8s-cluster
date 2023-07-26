@@ -46,7 +46,7 @@ spec:
       enabled: true
       resources:
         requests:
-          cpu: 10m
+          cpu: 5m
           memory: 10Mi
         limits:
           memory: 250Mi
@@ -126,7 +126,7 @@ spec:
             activeStandby: true
             resources:
               requests:
-                cpu: 10m
+                cpu: 5m
                 memory: 2Gi
               limits:
                 memory: 4Gi
@@ -162,7 +162,7 @@ spec:
             port: 80
             resources:
               requests:
-                cpu: 10m
+                cpu: 5m
                 memory: 1Gi
               limits:
                 memory: 2Gi
