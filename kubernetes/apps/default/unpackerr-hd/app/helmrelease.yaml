@@ -55,7 +55,7 @@ spec:
       complete:
         enabled: true
         type: nfs
-        server: "scorpion.prymal.linux"
+        server: 10.10.1.30
         path: /volume1/data/media/downloads/complete
         mountPath: /complete
     resources:
