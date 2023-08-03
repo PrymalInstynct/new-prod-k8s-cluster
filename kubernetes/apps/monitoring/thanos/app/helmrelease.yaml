@@ -75,14 +75,14 @@ spec:
       persistence:
         enabled: true
         storageClass: ceph-block
-        size: 20Gi
+        size: 40Gi
     storegateway:
       enabled: true
       replicaCount: 3
       persistence:
         enabled: true
         storageClass: ceph-block
-        size: 20Gi
+        size: 40Gi
     ruler:
       enabled: true
       replicaCount: 3
@@ -103,7 +103,7 @@ spec:
       persistence:
         enabled: true
         storageClass: ceph-block
-        size: 20Gi
+        size: 40Gi
     metrics:
       enabled: true
       serviceMonitor:
