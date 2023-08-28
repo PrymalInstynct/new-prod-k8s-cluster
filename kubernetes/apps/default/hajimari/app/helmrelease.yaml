@@ -45,8 +45,6 @@ spec:
               url: "https://harvester.prymal.linux"
             - name: Unifi Controller
               url: "https://unifi.prymal.linux/login?redirect=%2F"
-            - name: AdGuard Home - Container
-              url: "http://scorpion.prymal.linux:5300/#"
             - name: AdGuard Home - RPI 1
               url: "http://10.10.1.31"
             - name: AdGuard Home - RPI 2
