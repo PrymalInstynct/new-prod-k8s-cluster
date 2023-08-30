@@ -45,7 +45,7 @@ spec:
     image:
       # https://github.com/ansible-semaphore/semaphore/issues/1149
       repository: ghcr.io/onedr0p/semaphore
-      tag: v2.9.1@sha256:202cca3b11a7e07051e3da23a4e556ef3dc7cdd4d7beb3bdf22c0bf49ff2b2b3
+      tag: v2.9.2@sha256:2787e84a4b7a294913ab46c2fc2c7221fa44a49f4954a91db6a99e89a42798bb
     env:
       TZ: America/Denver
       SEMAPHORE_PLAYBOOK_PATH: /tmp/semaphore/
