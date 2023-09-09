@@ -72,7 +72,8 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: internal
+        ingressClassName: nginx
+          hajimari.io/icon: simple-icons:sabnzbd
         hosts:
           - host: &host "{{ .Release.Name }}.prymal.info"
             paths:
