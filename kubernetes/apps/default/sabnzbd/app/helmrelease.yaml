@@ -46,9 +46,9 @@ spec:
         sabnzbd.default.svc.cluster,
         sabnzbd.default.svc.cluster.local,
         sabnzbd.prymal.info
-    # envFrom:
-    #   - secretRef:
-    #       name: sabnzbd-secret
+    envFrom:
+      - secretRef:
+          name: sabnzbd-secret
     service:
       main:
         ports:
