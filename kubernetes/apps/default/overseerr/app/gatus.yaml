@@ -19,3 +19,6 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: discord
+            failure-threshold: 5
+            success-threshold: 2
+            send-on-resolved: true
