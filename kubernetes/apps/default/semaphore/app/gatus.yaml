@@ -5,7 +5,7 @@ metadata:
   name: semaphore-gatus-ep
   namespace: default
   labels:
-    gatus.io/enabled: "true"
+    gatus.io/enabled: "false"
 data:
   config.yaml: |
     endpoints:
