@@ -65,7 +65,6 @@ radarr:
 
           # Unwanted
           - ed38b889b31be83fda192888e2286d83  # BR-DISK
-          - dc98083864ea246d05a42df0d05f81cc  # x265 (HD)
           - b8cd450cbfa689c0259a01d9e29ba3d6  # 3D
 
           # Streaming Services
@@ -94,6 +93,7 @@ radarr:
           - c2863d2a50c9acad1fb50e53ece60817  # STAN
           # Qualities
           - 90a6f9a284dff5103f6346090e6280c8  # LQ
+          - dc98083864ea246d05a42df0d05f81cc  # x265 (HD)
         quality_profiles:
           - name: HD Bluray + WEB
             score: 0
