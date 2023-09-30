@@ -24,7 +24,7 @@ radarr:
         upgrade:
           allowed: true
           until_quality: Bluray-2160p
-          until_score: 10000
+          until_score: 5500
         min_format_score: 0
         quality_sort: top
         qualities:
