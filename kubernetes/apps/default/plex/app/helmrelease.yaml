@@ -36,9 +36,8 @@ spec:
       annotations:
         reloader.stakater.com/auto: "true"
     image:
-      repository: ghcr.io/onedr0p/plex
-      tag: 1.32.6.7557-1cf77d501@sha256:0d5a12bddc5ab41e0f055254335cbe09374972d04c147209321060e59f2cd506
-      imagePullPolicy: Always
+      repository: ghcr.io/onedr0p/plex-beta
+      tag: 1.32.7.7571-13cdc68dc@sha256:a9474ff865f654cee7069357ce52469ab2929abdc1133568ba07b5fe83d09e9f
     env:
       TZ: America/Denver
       ADVERTISE_IP: "http://10.10.1.101:32400/"
