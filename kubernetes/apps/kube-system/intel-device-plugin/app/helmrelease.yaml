@@ -29,10 +29,10 @@ spec:
   dependsOn:
     - name: node-feature-discovery
       namespace: kube-system
-  # values:
-  #   resources:
-  #     requests:
-  #       cpu: 5m
-  #       memory: 100Mi
-  #     limits:
-  #       memory: 500Mi
+  values:
+    resources:
+      requests:
+        cpu: 5m
+        memory: 100Mi
+      limits:
+        memory: 500Mi
