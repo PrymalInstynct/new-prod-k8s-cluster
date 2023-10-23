@@ -29,6 +29,13 @@ spec:
     - name: rook-ceph-cluster
       namespace: rook-ceph
   values:
+    initContainers:
+      01-init-db:
+        image: ghcr.io/onedr0p/postgres-init:14.8
+        imagePullPolicy: IfNotPresent
+        envFrom: &envFrom
+          - secretRef:
+              name: radarr-hd-secret
     controller:
       annotations:
         reloader.stakater.com/auto: "true"
@@ -44,9 +51,7 @@ spec:
       RADARR__PORT: &port 80
       RADARR__LOG_LEVEL: info
       RADARR__THEME: dark
-    envFrom:
-      - secretRef:
-          name: radarr-hd-secret
+    envFrom: *envFrom
     service:
       main:
         ports:
@@ -88,27 +93,21 @@ spec:
       fsGroup: 568
       fsGroupChangePolicy: OnRootMismatch
       supplementalGroups: [10000]
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 15Gi
-        storageClass: ceph-block
     persistence:
-      media:
+      config:
         enabled: true
-        type: nfs
-        server: "scorpion.prymal.linux"
-        path: /volume1/data/media
-        mountPath: /media
+        existingClaim: radarr-config
       scripts:
         enabled: true
         type: configMap
-        name: radarr-hd-configmap
+        name: radarr-configmap
         subPath: pushover-notify.sh
         mountPath: /scripts/pushover-notify.sh
         defaultMode: 0775
         readOnly: true
+      media:
+        enabled: true
+        existingClaim: media
     resources:
       requests:
         cpu: 5m
