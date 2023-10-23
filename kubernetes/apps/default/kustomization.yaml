@@ -21,6 +21,6 @@ resources:
   - ./recyclarr-uhd/ks.yaml
   - ./sabnzbd/ks.yaml
   # - ./semaphore/ks.yaml
-  - ./sonarr-hd/ks.yaml
+  # - ./sonarr-hd/ks.yaml
   - ./unpackerr-hd/ks.yaml
   - ./unpackerr-uhd/ks.yaml
