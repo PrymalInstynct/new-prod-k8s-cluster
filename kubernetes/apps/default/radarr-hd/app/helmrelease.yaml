@@ -96,11 +96,11 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: radarr-config
+        existingClaim: radarr-hd-config
       scripts:
         enabled: true
         type: configMap
-        name: radarr-configmap
+        name: radarr-hd-configmap
         subPath: pushover-notify.sh
         mountPath: /scripts/pushover-notify.sh
         defaultMode: 0775
