@@ -27,6 +27,9 @@ endpoints:
     group: "Infrastructure"
     url: https://harvester.prymal.linux/dashboard/auth/login
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     client:
       dns-resolver: tcp://10.10.1.31:53
       insecure: true
@@ -38,6 +41,9 @@ endpoints:
     group: "Infrastructure"
     url: http://scorpion.prymal.linux:5000/#/signin
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     client:
       dns-resolver: tcp://10.10.1.31:53
     conditions:
@@ -48,6 +54,9 @@ endpoints:
     group: "Infrastructure"
     url: http://scorpion.prymal.linux:9001/login
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     client:
       dns-resolver: tcp://10.10.1.31:53
     conditions:
@@ -58,6 +67,9 @@ endpoints:
     group: "Infrastructure"
     url: http://10.10.1.31
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     client:
       dns-resolver: tcp://10.10.1.31:53
     conditions:
@@ -68,6 +80,9 @@ endpoints:
     group: "Infrastructure"
     url: http://10.10.1.32
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     client:
       dns-resolver: tcp://10.10.1.31:53
     conditions:
@@ -78,6 +93,9 @@ endpoints:
     group: "Infrastructure"
     url: tcp://10.10.1.10:22
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     conditions:
       - "[CONNECTED] == true"
     alerts:
@@ -86,6 +104,9 @@ endpoints:
     group: "Infrastructure"
     url: tcp://10.10.1.11:22
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     conditions:
       - "[CONNECTED] == true"
     alerts:
@@ -94,6 +115,9 @@ endpoints:
     group: "Infrastructure"
     url: tcp://10.10.1.12:22
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     conditions:
       - "[CONNECTED] == true"
     alerts:
@@ -102,6 +126,9 @@ endpoints:
     group: "Infrastructure"
     url: tcp://10.10.1.13:22
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     conditions:
       - "[CONNECTED] == true"
     alerts:
@@ -110,6 +137,9 @@ endpoints:
     group: "Infrastructure"
     url: tcp://10.10.1.14:22
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     conditions:
       - "[CONNECTED] == true"
     alerts:
@@ -118,6 +148,9 @@ endpoints:
     group: "Infrastructure"
     url: tcp://10.10.111.200:22
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     conditions:
       - "[CONNECTED] == true"
     alerts:
@@ -126,6 +159,9 @@ endpoints:
     group: "Web - External"
     url: https://status.prymal.info
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     client:
       dns-resolver: tcp://1.1.1.1:53
     conditions:
@@ -136,6 +172,9 @@ endpoints:
     group: "Web - External"
     url: https://prymalhome.duckdns.org:8123
     interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
     client:
       dns-resolver: tcp://1.1.1.1:53
     conditions:
