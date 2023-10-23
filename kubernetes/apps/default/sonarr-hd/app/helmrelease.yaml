@@ -26,8 +26,14 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    initContainers:
+      01-init-db:
+        image: ghcr.io/onedr0p/postgres-init:14.8
+        imagePullPolicy: IfNotPresent
+        envFrom: &envFrom
+          - secretRef:
+              name: sonarr-hd-secret
     controller:
-      type: statefulset
       annotations:
         reloader.stakater.com/auto: "true"
     image:
@@ -42,9 +48,7 @@ spec:
       SONARR__PORT: &port 80
       SONARR__LOG_LEVEL: info
       SONARR__THEME: dark
-    envFrom:
-      - secretRef:
-          name: sonarr-hd-secret
+    envFrom: *envFrom
     service:
       main:
         ports:
@@ -86,19 +90,10 @@ spec:
       fsGroup: 568
       fsGroupChangePolicy: OnRootMismatch
       supplementalGroups: [10000]
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 10Gi
-        storageClass: ceph-block
     persistence:
-      media:
+      config:
         enabled: true
-        type: nfs
-        server: "scorpion.prymal.linux"
-        path: /volume1/data/media
-        mountPath: /media
+        existingClaim: sonarr-hd-config
       scripts:
         enabled: true
         type: configMap
@@ -107,6 +102,9 @@ spec:
         mountPath: /scripts/pushover-notify.sh
         defaultMode: 0775
         readOnly: true
+      media:
+        enabled: true
+        existingClaim: media
     resources:
       requests:
         cpu: 5m
