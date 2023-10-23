@@ -61,6 +61,7 @@ spec:
         connections:
           compression:
             enabled: true
+          requireMsgr2: true
       crashCollector:
         disable: false
       dashboard:
@@ -146,7 +147,7 @@ spec:
         spec:
           failureDomain: host
           replicated:
-            size: 3
+            size: 5
         storageClass:
           enabled: true
           name: ceph-block
@@ -172,7 +173,7 @@ spec:
           dataPools:
             - failureDomain: host
               replicated:
-                size: 3
+                size: 5
               name: data0
           metadataServer:
             activeCount: 1
@@ -204,7 +205,7 @@ spec:
           metadataPool:
             failureDomain: host
             replicated:
-              size: 3
+              size: 5
           dataPool:
             failureDomain: host
             erasureCoded:
