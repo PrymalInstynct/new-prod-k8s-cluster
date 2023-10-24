@@ -41,6 +41,8 @@ spec:
               UN_SONARR_0_PATHS_0: /media/downloads/complete/sonarr-hd
               UN_RADARR_0_URL: http://radarr-hd.default.svc.cluster.local
               UN_RADARR_0_PATHS_0: /media/downloads/complete/radarr-hd
+              UN_WEBSERVER_METRICS: true
+              UN_WEBSERVER_LISTEN_ADDR: 0.0.0.0:5656
             envFrom:
               - secretRef:
                   name: unpackerr-hd-secret
