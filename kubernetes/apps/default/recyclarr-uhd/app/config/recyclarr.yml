@@ -135,3 +135,34 @@ radarr:
         quality_profiles:
           - name: UHD Bluray + WEB
             score: -10000
+
+# Instance Definition
+# This section defines your instance type, name, and authentication
+# Documentation: https://recyclarr.dev/wiki/yaml/config-reference/#basic
+sonarr:
+  web-2160p-v4:
+    base_url: http://sonarr-uhd.default.svc.cluster.local
+    api_key: !env_var SONARR_API_KEY
+
+    include:
+      # Comment out any of the following includes to disable them
+      - template: sonarr-quality-definition-series
+      - template: sonarr-v4-quality-profile-web-2160p
+      - template: sonarr-v4-custom-formats-web-2160p
+
+# Custom Formats: https://recyclarr.dev/wiki/yaml/config-reference/custom-formats/
+    custom_formats:
+      # HDR Formats
+      - trash_ids:
+          # Comment out the next line if you and all of your users' setups are fully DV compatible
+          - 9b27ab6498ec0f31a3353992e19434ca # DV (WEBDL)
+          - 7878c33f1963fefb3d6c8657d46c2f0a # DV HRD10
+        quality_profiles:
+          - name: WEB-2160p
+
+      # Optional
+      - trash_ids:
+          - 2016d1676f5ee13a5b7257ff86ac9a93 # SDR
+        quality_profiles:
+          - name: WEB-2160p
+            score: 0
