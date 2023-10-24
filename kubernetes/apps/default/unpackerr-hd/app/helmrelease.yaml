@@ -34,7 +34,7 @@ spec:
           main:
             image:
               repository: docker.io/golift/unpackerr
-              tag: 0.12.0@sha256:f2e35d22d85502d9e67da407cb6b1d9a71988dcadf8c7393043e15dd1d42857a
+              tag: 0.12.0
             env:
               TZ: America/Denver
               UN_SONARR_0_URL: http://sonarr-hd.default.svc.cluster.local
