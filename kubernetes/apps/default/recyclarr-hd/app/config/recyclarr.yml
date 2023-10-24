@@ -3,7 +3,7 @@
 # This section defines your instance type, name, and authentication
 # Documentation: https://recyclarr.dev/wiki/yaml/config-reference/#basic
 radarr:
-  hd-bluray-web:
+  movie-hd-bluray-web:
     base_url: http://radarr-hd.default.svc.cluster.local
     api_key: !env_var RADARR_API_KEY
 
@@ -101,7 +101,7 @@ radarr:
 # This section defines your instance type, name, and authentication
 # Documentation: https://recyclarr.dev/wiki/yaml/config-reference/#basic
 sonarr:
-  hd-bluray-web:
+  tv-hd-bluray-web:
     base_url: http://sonarr-hd.default.svc.cluster.local
     api_key: !env_var SONARR_API_KEY
 
