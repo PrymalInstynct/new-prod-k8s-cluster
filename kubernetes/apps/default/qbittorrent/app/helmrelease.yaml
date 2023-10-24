@@ -69,8 +69,8 @@ spec:
       QBT_BitTorrent__Session__AlternativeGlobalDLSpeedLimit: 1024
       QBT_BitTorrent__Session__AlternativeGlobalUPSpeedLimit: 900
       QBT_BitTorrent__Scheduler__days: EveryDay 
-      QBT_BitTorrent__Scheduler__end_time: @Variant(\0\0\0\xf\x4\xb8\x7f\0)
-      QBT_BitTorrent__Scheduler__start_time: @Variant(\0\0\0\xf\x1I\x97\0)
+      QBT_BitTorrent__Scheduler__end_time: '@Variant(\0\0\0\xf\x4\xb8\x7f\0)'
+      QBT_BitTorrent__Scheduler__start_time: '@Variant(\0\0\0\xf\x1I\x97\0)'
     service:
       main:
         ports:
