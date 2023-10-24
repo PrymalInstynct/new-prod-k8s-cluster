@@ -87,7 +87,10 @@ spec:
     ingress:
       main:
         enabled: true
-        className: internal
+        className: nginx
+        annotations:
+          hajimari.io/appName: "Prowlarr"
+          hajimari.io/icon:  mdi:movie-search
         hosts:
           - host: &host "{{ .Release.Name }}.prymal.info"
             paths:
