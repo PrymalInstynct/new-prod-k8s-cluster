@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kubernetes-schemas-gatus-ep
+  namespace: default
+  labels:
+    gatus.io/enabled: "true"
+data:
+  config.yaml: |
+    endpoints:
+      - name: kubernetes-schemas
+        group: "Web - External"
+        url: https://kubernetes-schemas.prymal.info
+        interval: 1m
+        ui:
+          hide-hostname: true
+          hide-url: true
+        client:
+          dns-resolver: tcp://10.10.1.31:53
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: discord
+            failure-threshold: 5
+            success-threshold: 2
+            send-on-resolved: true
