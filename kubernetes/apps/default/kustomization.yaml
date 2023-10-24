@@ -25,4 +25,4 @@ resources:
   # - ./semaphore/ks.yaml
   - ./sonarr-hd/ks.yaml
   - ./unpackerr-hd/ks.yaml
-  # - ./unpackerr-uhd/ks.yaml
+  - ./unpackerr-uhd/ks.yaml
