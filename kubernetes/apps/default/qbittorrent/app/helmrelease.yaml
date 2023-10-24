@@ -52,6 +52,7 @@ spec:
       QBT_BitTorrent__Session__InterfaceName: eth0
       QBT_BitTorrent__Session__DefaultSavePath: /media/downloads/complete
       QBT_BitTorrent__Session__TempPath: /media/downloads/incomplete
+      QBT_BitTorrent__Session__TempPathEnabled: true
       QBT_BitTorrent__Session__MaxConnections: 50
       QBT_BitTorrent__Session__MaxConnectionsPerTorrent: 5
       QBT_BitTorrent__Session__MaxUploads: 500
@@ -62,15 +63,19 @@ spec:
       QBT_BitTorrent__Session__MaxActiveTorrents: 501
       QBT_BitTorrent__Session__GlobalMaxRatio: 2
       QBT_BitTorrent__Session__GlobalMaxSeedingMinutes: 43200
-      QBT_BitTorrent__Session__GlobalDLSpeedLimit: 1024
+      QBT_BitTorrent__Session__GlobalDLSpeedLimit: 2048
       QBT_BitTorrent__Session__GlobalUPSpeedLimit: 900
       QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
       QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
-      QBT_BitTorrent__Session__AlternativeGlobalDLSpeedLimit: 1024
-      QBT_BitTorrent__Session__AlternativeGlobalUPSpeedLimit: 900
-      QBT_BitTorrent__Scheduler__days: EveryDay 
-      QBT_BitTorrent__Scheduler__end_time: '@Variant(\0\0\0\xf\x4\xb8\x7f\0)'
-      QBT_BitTorrent__Scheduler__start_time: '@Variant(\0\0\0\xf\x1I\x97\0)'
+      QBT_BitTorrent__Session__AlternativeGlobalDLSpeedLimit: 512
+      QBT_BitTorrent__Session__AlternativeGlobalUPSpeedLimit: 256
+      QBT_BitTorrent__Session__DisableAutoTMMByDefault: false
+      QBT_BitTorrent__Session__DisableAutoTMMTriggers__CategorySavePathChanged: false
+      QBT_BitTorrent__Session__DisableAutoTMMTriggers__DefaultSavePathChanged: false
+      QBT_BitTorrent__Session__LSDEnabled: false
+      QBT_BitTorrent__Session__DHTEnabled: false
+      QBT_BitTorrent__Session__PeXEnabled: false
+      QBT_BitTorrent__Scheduler__days: EveryDay
     service:
       main:
         ports:
