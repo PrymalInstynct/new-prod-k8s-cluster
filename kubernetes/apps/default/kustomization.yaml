@@ -24,5 +24,6 @@ resources:
   - ./sabnzbd/ks.yaml
   # - ./semaphore/ks.yaml
   - ./sonarr-hd/ks.yaml
+  - ./sonarr-uhd/ks.yaml
   - ./unpackerr-hd/ks.yaml
   - ./unpackerr-uhd/ks.yaml
