@@ -31,7 +31,6 @@ spec:
       namespace: rook-ceph
   values:
     controller:
-      type: statefulset
       annotations:
         reloader.stakater.com/auto: "true"
     image:
@@ -41,8 +40,37 @@ spec:
       TZ: America/Denver
       QBITTORRENT__PORT: &port 80
       QBITTORRENT__BT_PORT: &port-bt 50413
-      QBT_Preferences__WebUI__AlternativeUIEnabled: "false"
-      QBT_Preferences__WebUI__RootFolder: ""
+      QBT_Preferences__WebUI__AlternativeUIEnabled: false
+      QBT_Preferences__WebUI__LocalHostAuth: false
+      QBT_Preferences__WebUI__AuthSubnetWhitelistEnabled: true
+      QBT_Preferences__WebUI__AuthSubnetWhitelist: 10.0.0.0/8
+      QBT_BitTorrent__Session__Interface: eth0
+      QBT_BitTorrent__Session__InterfaceAddress:
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
+      QBT_BitTorrent__Session__InterfaceName: eth0
+      QBT_BitTorrent__Session__DefaultSavePath: /media/downloads/complete
+      QBT_BitTorrent__Session__TempPath: /media/downloads/incomplete
+      QBT_BitTorrent__Session__MaxConnections: 50
+      QBT_BitTorrent__Session__MaxConnectionsPerTorrent: 5
+      QBT_BitTorrent__Session__MaxUploads: 500
+      QBT_BitTorrent__Session__MaxUploadsPerTorrent: 2
+      QBT_BitTorrent__Session__QueueingSystemEnabled: true
+      QBT_BitTorrent__Session__MaxActiveDownloads: 1
+      QBT_BitTorrent__Session__MaxActiveUploads: 500
+      QBT_BitTorrent__Session__MaxActiveTorrents: 501
+      QBT_BitTorrent__Session__GlobalMaxRatio: 2
+      QBT_BitTorrent__Session__GlobalMaxSeedingMinutes: 43200
+      QBT_BitTorrent__Session__GlobalDLSpeedLimit: 1024
+      QBT_BitTorrent__Session__GlobalUPSpeedLimit: 900
+      QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
+      QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
+      QBT_BitTorrent__Session__AlternativeGlobalDLSpeedLimit: 1024
+      QBT_BitTorrent__Session__AlternativeGlobalUPSpeedLimit: 900
+      QBT_BitTorrent__Scheduler__days: EveryDay 
+      QBT_BitTorrent__Scheduler__end_time: @Variant(\0\0\0\xf\x4\xb8\x7f\0)
+      QBT_BitTorrent__Scheduler__start_time: @Variant(\0\0\0\xf\x1I\x97\0)
     service:
       main:
         ports:
@@ -51,15 +79,15 @@ spec:
       bittorrent:
         enabled: true
         type: LoadBalancer
+        annotations:
+          io.cilium/lb-ipam-ips: 10.10.1.102
         ports:
           bittorrent:
             enabled: true
             port: *port-bt
             protocol: TCP
             targetPort: *port-bt
-        annotations:
-          io.cilium/lb-ipam-ips: "10.10.1.102"
-        externalTrafficPolicy: Local
+        externalTrafficPolicy: Cluster
     ingress:
       main:
         enabled: true
@@ -80,33 +108,16 @@ spec:
       fsGroup: 568
       fsGroupChangePolicy: OnRootMismatch
       supplementalGroups: [10000]
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        storageClass: ceph-block
-    # Note: If downloading very large torrents it might be worth using NFS for your download directory.
-    # Beware if you are downloading torrents directly to a ZFS dataset that dataset will accrue fragmentation.
     persistence:
-      downloads:
+      config:
         enabled: true
-        type: nfs
-        server: "scorpion.prymal.linux"
-        path: /volume1/data/media/downloads
-        mountPath: /downloads
+        existingClaim: qbittorrent-config
       media:
         enabled: true
-        type: nfs
-        server: "scorpion.prymal.linux"
-        path: /volume1/data/media
-        mountPath: /media
-      incomplete:
-        enabled: true
-        type: emptyDir
+        existingClaim: media
     resources:
       requests:
-        cpu: 5m
-        memory: 256Mi
+        cpu: 10m
+        memory: 250Mi
       limits:
-        memory: 5120Mi
+        memory: 8Gi
