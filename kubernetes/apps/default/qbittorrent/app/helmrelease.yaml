@@ -64,12 +64,12 @@ spec:
       QBT_BitTorrent__Session__MaxActiveTorrents: 501
       QBT_BitTorrent__Session__GlobalMaxRatio: 2
       QBT_BitTorrent__Session__GlobalMaxSeedingMinutes: 43200
-      QBT_BitTorrent__Session__GlobalDLSpeedLimit: 2048
-      QBT_BitTorrent__Session__GlobalUPSpeedLimit: 900
+      QBT_BitTorrent__Session__GlobalDLSpeedLimit: 5120
+      QBT_BitTorrent__Session__GlobalUPSpeedLimit: 2048
       QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
       QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
-      QBT_BitTorrent__Session__AlternativeGlobalDLSpeedLimit: 512
-      QBT_BitTorrent__Session__AlternativeGlobalUPSpeedLimit: 256
+      QBT_BitTorrent__Session__AlternativeGlobalDLSpeedLimit: 2048
+      QBT_BitTorrent__Session__AlternativeGlobalUPSpeedLimit: 1024
       QBT_BitTorrent__Session__DisableAutoTMMByDefault: false
       QBT_BitTorrent__Session__DisableAutoTMMTriggers__CategorySavePathChanged: false
       QBT_BitTorrent__Session__DisableAutoTMMTriggers__DefaultSavePathChanged: false
