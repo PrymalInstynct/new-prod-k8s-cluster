@@ -55,7 +55,7 @@ spec:
       QBT_BitTorrent__Session__TempPathEnabled: true
       QBT_BitTorrent__Session__SubcategoriesEnabled: true
       QBT_BitTorrent__Session__MaxConnections: 50
-      QBT_BitTorrent__Session__MaxConnectionsPerTorrent: 5
+      QBT_BitTorrent__Session__MaxConnectionsPerTorrent: 10
       QBT_BitTorrent__Session__MaxUploads: 500
       QBT_BitTorrent__Session__MaxUploadsPerTorrent: 2
       QBT_BitTorrent__Session__QueueingSystemEnabled: true
