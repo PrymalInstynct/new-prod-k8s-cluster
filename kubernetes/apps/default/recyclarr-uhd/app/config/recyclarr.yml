@@ -53,13 +53,14 @@ radarr:
           - 9c38ebb7384dada637be8899efa68e6f # SDR
         quality_profiles:
           - name: UHD Bluray + WEB
-            score: 0
+            score: 10
 
       # HDR Formats
       - trash_ids:
           - 58d6a88f13e2db7f5059c41047876f00 # DV
           - 55d53828b9d81cbe20b02efd00aa0efd # DV HLG
           - b974a6cd08c1066250f1f177d7aa1225 # HDR10+
+          - b17886cb4158d9fea189859409975758 # HDR10+ Boost
           - 08d6d8834ad9ec87b1dc7ec8148e7a1f # PQ
           - 9364dd386c9b4a1100dde8264690add7 # HLG
         quality_profiles:
@@ -94,4 +95,4 @@ sonarr:
           - 2016d1676f5ee13a5b7257ff86ac9a93 # SDR
         quality_profiles:
           - name: WEB-2160p
-            score: 0
+            score: 10
