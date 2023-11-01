@@ -1,13 +1,12 @@
 ---
+# yaml-language-server: $schema=https://kubernetes-schemas.prymal.info/externaldns.k8s.io/dnsendpoint_v1alpha1.json
 apiVersion: externaldns.k8s.io/v1alpha1
 kind: DNSEndpoint
 metadata:
   name: cloudflared
   namespace: networking
-  annotations:
-    external-dns.alpha.kubernetes.io/target: "ingress.prymal.info"
 spec:
   endpoints:
-    - dnsName: "ingress.prymal.info"
+    - dnsName: ingress.prymal.info
       recordType: CNAME
-      targets: ["${SECRET_CLOUDFLARE_TUNNEL_ID}.cfargotunnel.com"]
+      targets: ["${CLUSTER_CLOUDFLARE_TUNNEL_ID}.cfargotunnel.com"]
