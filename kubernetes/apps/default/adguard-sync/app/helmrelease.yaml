@@ -11,14 +11,13 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       sourceRef:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-  maxHistory: 3
+  maxHistory: 2
   install:
-    createNamespace: true
     remediation:
       retries: 3
   upgrade:
@@ -28,14 +27,25 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    controller:
-      strategy: RollingUpdate
-    image:
-      repository: ghcr.io/bakito/adguardhome-sync
-      tag: v0.4.15@sha256:57b39f62352eabfa80d4362996483fa7f8b00d4eb443d574e17389e7b85e2328
-    envFrom:
-      - secretRef:
-          name: adguardhome-sync-secret
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+          configmap.reloader.stakater.com/reload: adguardhome-sync-settings
+      containers:
+        main:
+          image:
+            repository: ghcr.io/bakito/adguardhome-sync
+            tag: v0.4.15@sha256:57b39f62352eabfa80d4362996483fa7f8b00d4eb443d574e17389e7b85e2328
+          envFrom:
+            - secretRef:
+                name: adguardhome-sync-secret
+          resources:
+            requests:
+              cpu: 5m
+              memory: 10Mi
+            limits:
+              memory: 50Mi
     service:
       main:
         ports:
@@ -49,11 +59,3 @@ spec:
         subPath: adguardhome-sync.yaml
         mountPath: /config/adguardhome-sync.yaml
         readOnly: false
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: adguardhome-sync-settings
-    resources:
-      requests:
-        cpu: 5m
-        memory: 10Mi
-      limits:
-        memory: 50Mi
