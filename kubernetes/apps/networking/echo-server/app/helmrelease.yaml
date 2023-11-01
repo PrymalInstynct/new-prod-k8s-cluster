@@ -77,9 +77,9 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx
+        ingressClassName: nginx
         annotations:
-          external-dns.alpha.kubernetes.io/target: "ingress.prymal.info"
+          external-dns.alpha.kubernetes.io/target: ingress.prymal.info
           hajimari.io/icon: video-input-antenna
         hosts:
           - host: &host "{{ .Release.Name }}.prymal.info"
