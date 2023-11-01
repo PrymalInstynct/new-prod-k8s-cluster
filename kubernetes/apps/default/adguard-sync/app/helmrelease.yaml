@@ -50,7 +50,7 @@ spec:
       main:
         ports:
           http:
-            port: &port 8080
+            port: 8080
     persistence:
       config:
         enabled: true
