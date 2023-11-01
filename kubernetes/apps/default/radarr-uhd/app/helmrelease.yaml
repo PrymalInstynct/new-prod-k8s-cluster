@@ -95,7 +95,7 @@ spec:
         enabled: true
         className: nginx
         annotations:
-          hajimari.io/appName: "Radarr HD"
+          hajimari.io/appName: "Radarr UHD"
           hajimari.io/icon: mdi:filmstrip
         hosts:
           - host: &host "{{ .Release.Name }}.prymal.info"
