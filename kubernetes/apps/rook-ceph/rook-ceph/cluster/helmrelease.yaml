@@ -45,12 +45,6 @@ spec:
               - *host
     toolbox:
       enabled: true
-      # resources:
-      #   requests:
-      #     cpu: 5m
-      #     memory: 10Mi
-      #   limits:
-      #     memory: 250Mi
     configOverride: |
       [global]
       bdev_enable_discard = true
@@ -96,59 +90,6 @@ spec:
           - name: "k8s-worker-prod-6"
             devices:
               - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2333E86C84B0"
-      # resources:
-      #   mgr:
-      #     limits:
-      #       memory: "1Gi"
-      #     requests:
-      #       cpu: "50m"
-      #       memory: "512Mi"
-      #   mon:
-      #     limits:
-      #       memory: "2Gi"
-      #     requests:
-      #       cpu: "100m"
-      #       memory: "1Gi"
-      #   osd:
-      #     limits:
-      #       memory: "4Gi"
-      #     requests:
-      #       cpu: "100m"
-      #       memory: "4Gi"
-      #   prepareosd:
-      #     requests:
-      #       cpu: "50m"
-      #       memory: "50Mi"
-      #   mgr-sidecar:
-      #     limits:
-      #       memory: "100Mi"
-      #     requests:
-      #       cpu: "10m"
-      #       memory: "40Mi"
-      #   crashcollector:
-      #     limits:
-      #       memory: "60Mi"
-      #     requests:
-      #       cpu: "10m"
-      #       memory: "60Mi"
-      #   logcollector:
-      #     limits:
-      #       memory: "1Gi"
-      #     requests:
-      #       cpu: "10m"
-      #       memory: "100Mi"
-      #   cleanup:
-      #     limits:
-      #       memory: "1Gi"
-      #     requests:
-      #       cpu: "50m"
-      #       memory: "100Mi"
-      #   exporter:
-      #     limits:
-      #       memory: "128Mi"
-      #     requests:
-      #       cpu: "5m"
-      #       memory: "50Mi"
     cephBlockPools:
       - name: ceph-blockpool
         spec:
@@ -185,12 +126,6 @@ spec:
           metadataServer:
             activeCount: 1
             activeStandby: true
-            # resources:
-            #   requests:
-            #     cpu: 5m
-            #     memory: 2Gi
-            #   limits:
-            #     memory: 4Gi
         storageClass:
           enabled: true
           isDefault: false
@@ -221,12 +156,6 @@ spec:
           preservePoolsOnDelete: true
           gateway:
             port: 80
-            # resources:
-            #   requests:
-            #     cpu: 5m
-            #     memory: 1Gi
-            #   limits:
-            #     memory: 2Gi
             instances: 2
           healthCheck:
             bucket:
