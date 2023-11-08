@@ -24,9 +24,19 @@ kubernetes:
           ansible_user: zimmermanc
           ansible_host: 10.10.1.13
           ceph_drives:
-            - /dev/disk/by-id/nvme-Samsung_SSD_980_1TB_S64ANS0W332522L
+            - /dev/disk/by-id/nvme-CT1000P3PSSD8_2332E86A41FA
         k8s-worker-prod-4:
           ansible_user: zimmermanc
           ansible_host: 10.10.1.14
           ceph_drives:
-            - /dev/disk/by-id/nvme-Samsung_SSD_980_1TB_S64ANS0W316958T
+            - /dev/disk/by-id/nvme-CT1000P3PSSD8_2332E86A4180
+        k8s-worker-prod-5:
+          ansible_user: zimmermanc
+          ansible_host: 10.10.1.15
+          ceph_drives:
+            - /dev/disk/by-id/nvme-CT1000P3PSSD8_2332E86A3FE0
+        k8s-worker-prod-6:
+          ansible_user: zimmermanc
+          ansible_host: 10.10.1.16
+          ceph_drives:
+            - /dev/disk/by-id/nvme-CT1000P3PSSD8_2333E86C84B0
