@@ -78,18 +78,18 @@ spec:
           - name: "k8s-control-prod-2"
             devices:
               - name: "/dev/disk/by-id/nvme-Samsung_SSD_980_1TB_S64ANS0W315870Y"
-          - name: "k8s-worker-prod-3"
-            devices:
-              - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2332E86A41FA"
-          - name: "k8s-worker-prod-4"
-            devices:
-              - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2332E86A4180"
-          - name: "k8s-worker-prod-5"
-            devices:
-              - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2332E86A3FE0"
-          - name: "k8s-worker-prod-6"
-            devices:
-              - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2333E86C84B0"
+          # - name: "k8s-worker-prod-3"
+          #   devices:
+          #     - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2332E86A41FA"
+          # - name: "k8s-worker-prod-4"
+          #   devices:
+          #     - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2332E86A4180"
+          # - name: "k8s-worker-prod-5"
+          #   devices:
+          #     - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2332E86A3FE0"
+          # - name: "k8s-worker-prod-6"
+          #   devices:
+          #     - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2333E86C84B0"
     cephBlockPools:
       - name: ceph-blockpool
         spec:
